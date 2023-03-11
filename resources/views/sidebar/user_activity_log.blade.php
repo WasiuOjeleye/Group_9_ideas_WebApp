@@ -70,7 +70,13 @@
                             </li> --}}
                         </ul>
                     </li>
-                
+                    {{-- <li class="sidebar-item">
+                        <a href="/add_Admin" class='sidebar-link'>
+                            <i class="bi bi-people"></i>
+                            <span>Add Admins</span>
+                        </a>
+                      
+                    </li> --}}
                     @else
                     <li class="sidebar-item">
                         <a href="{{ route('related') }}" class='sidebar-link'>
