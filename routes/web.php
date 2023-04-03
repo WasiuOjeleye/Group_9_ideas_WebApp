@@ -44,9 +44,14 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('Group/new_ideas', [App\Http\Controllers\FormController::class, 'ideas'])->middleware('auth')->name('ideas');
 Route::get('/my_topics', [App\Http\Controllers\FormController::class, 'related'])->middleware('auth')->name('related');
 Route::get('/reading_mode/{id}', [App\Http\Controllers\FormController::class, 'read'])->middleware('auth')->name('read');
+Route::get('/likes/{id}', [App\Http\Controllers\RatingController::class, 'likes'])->middleware('auth')->name('likes');
+Route::get('/unlikes/{id}', [App\Http\Controllers\RatingController::class, 'unlikes'])->middleware('auth')->name('unlikes');
+Route::get('/ratings', [App\Http\Controllers\RatingController::class, 'ratings'])->middleware('auth')->name('ratings');
+
 
 Route::get('/add_Admin', [App\Http\Controllers\Auth\RegisterController::class, 'newadmin'])->name('newadmin');
 Route::post('/new_admin', [App\Http\Controllers\Auth\RegisterController::class, 'storeAdmin'])->name('storeAdmin');
+Route::post('idea/edit/{id}', [App\Http\Controllers\Auth\RegisterController::class, 'storeAdmin'])->name('storeAdmin');
 
 // -----------------------------login----------------------------------------//
 Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
@@ -76,6 +81,7 @@ Route::PUT('profile_user/store/{id}', [App\Http\Controllers\UserManagementContro
 // ----------------------------- user userManagement -----------------------//
 
 //Route::get('userManagement/new_ideas', [App\Http\Controllers\UserManagementController::class, 'ideas'])->middleware('auth')->name('ideas');
+Route::get('AllUsers', [App\Http\Controllers\UserManagementController::class, 'allusers'])->middleware('auth')->name('allusers');
 Route::get('userManagement', [App\Http\Controllers\UserManagementController::class, 'index'])->middleware('auth')->name('userManagement');
 Route::get('user/add/new', [App\Http\Controllers\UserManagementController::class, 'addNewUser'])->middleware('auth')->name('user/add/new');
 Route::post('user/add/save', [App\Http\Controllers\UserManagementController::class, 'addNewUserSave'])->name('user/add/save');
@@ -98,3 +104,5 @@ Route::get('delete/{id}', [App\Http\Controllers\FormController::class, 'viewDele
 
 //========================================================================//
 Route::get('ideas/add/new', [App\Http\Controllers\UserManagementController::class, 'addNewideas'])->middleware('auth')->name('ideas/add/new');
+Route::get('ideas/edit/{id}', [App\Http\Controllers\UserManagementController::class, 'edit_ideas'])->middleware('auth')->name('ideas/edit');
+Route::PUT('idea/edit_new/{id}', [App\Http\Controllers\UserManagementController::class, 'update_ideas'])->name('ideas/update_idea');

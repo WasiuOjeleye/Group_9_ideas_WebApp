@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
 use DB;
 use App\Models\User;
+use App\Models\Idea;
 use App\Models\Form;
 use App\Rules\MatchOldPassword;
 use Carbon\Carbon;
@@ -29,6 +30,11 @@ class UserManagementController extends Controller
         }
         
     }
+
+    public function allusers(){
+        $data = DB::table('users')->get();
+        return view('usermanagement.view_users',compact('data'));
+    }
     // view detail 
     public function viewDetail($id)
     {  
@@ -51,6 +57,35 @@ class UserManagementController extends Controller
     }
     public function addNewideas(){
         return view('form.add_new_ideas');
+    }
+
+    public function edit_ideas(Request $request, $id){
+        $ideas= Idea::find($id);
+        return view('form.edit_ideas', compact('ideas'));
+    }
+    public function update_ideas(Request $request, $id){
+        
+
+            $posted_by = $request->posted_by;
+            $target_group     = $request->target_group;
+            $title   = $request->title;
+            $description       = $request->description;
+
+            $Idea = Idea::find($id);
+            
+            $Idea->posted_by = $posted_by;
+           
+            $Idea->target_group      = $target_group;
+            $Idea->title    = $title;
+            $Idea->descriptions       = $description;
+            $Idea->amount       = $request->amount;
+            $Idea->region      = $request->region;
+            $Idea->country       = $request->country;       
+            $Idea->update();
+
+        $ideas = DB::table('ideas')->get();
+        Toastr::success('Create new account successfully :)','Success');
+        return view('usermanagement.ideas',compact('ideas'));
     }
     // use activity log
     public function activityLog()

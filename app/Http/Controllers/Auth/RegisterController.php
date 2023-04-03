@@ -48,7 +48,7 @@ class RegisterController extends Controller
             'password'  => Hash::make($request->password),
             'phone_number' => $request->phone,
             'birth_date' => $request->birth_date,
-            'ideas' => $request->investment,
+            'ideas' =>  json_encode($request->investment),
             
         ]);
         Toastr::success('Create new account successfully :)','Success');
@@ -75,7 +75,7 @@ class RegisterController extends Controller
             'password'  => Hash::make($request->password),
             'phone_number' => $request->phone,
             'birth_date' => $request->birth_date,
-            'ideas' => $request->investment,
+            'ideas' => json_encode($request->investment),
             
         ]);
         Toastr::success('Create new account successfully :)','Success');

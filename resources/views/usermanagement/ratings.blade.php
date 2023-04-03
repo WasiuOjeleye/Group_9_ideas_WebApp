@@ -41,31 +41,48 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">All Users Details</h4>
+                    <h4 class="card-title">Ratings Details</h4>
                 </div>
                
                     <table class="table table-striped" id="table1">
                         <thead>
                             <tr>
                                 <th>S/NO</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Phone Number</th>
-                                <th>Role</th>
-                                <th>Topic</th>                               
-                                
-                               
+                                <th>Client</th>                               
+                                <th>Topic</th> 
+                                <th>Idea</th>
+                                <th>Ratings</th>                            
                             </tr>    
                         </thead>
                         <tbody>
                             @foreach ($data as $key => $item)
                                 <tr>
-                                    <td>{{ ++$key }}</td>                                    
-                                    <td>{{ $item->name }}</td>
-                                    <td>{{ $item->email }}</td>
-                                    <td>{{ $item->phone_number }}</td>
-                                    <td>{{ $item->role_name }}</td>
-                                    <td>{{ $item->ideas }}</td>
+                                    <td>{{ ++$key }}</td> 
+                                    @php
+                                    $id=$item->user_id;
+                                    $idea_id=$item->idea_id;
+                                    $user= DB::table('users')                                                
+                                        ->where('users.id', $id)
+                                        ->get();
+                                    $ideas= DB::table('ideas')
+                                        ->where('ideas.id', $idea_id)
+                                        ->get();
+                                    @endphp
+                                    @foreach ($user as $details)
+                                    <td>{{ $details->name }}</td>
+                                    @endforeach                               
+                                    @foreach ($ideas as $details)
+                                    <td>{{ $details->target_group }}</td>
+                                    <td>{{ $details->title }}</td>
+                                    
+                                    @endforeach 
+                                    @if ($item->likes==1)
+                                    <td>Liked</td>
+                                    @else
+                                    <td>Unliked</td>
+                                    @endif
+                                    
+                                    
                                     
                                 </tr>
                             @endforeach

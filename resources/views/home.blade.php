@@ -3,6 +3,26 @@
 @extends('sidebar.user_activity_log')
 @endsection
 @section('content')
+<style>
+    .bg-col{
+        background-color: rgb(22, 4, 86);
+    }
+    .bg-col p{
+        color: whitesmoke;
+    }
+    .bg-col h5{
+        color: rgb(35, 159, 236);
+    }
+    .bg-col .sign{
+        float: right;
+        font-size: 10px;
+        font-style: italic;
+    }
+    span small{
+        color: blue;
+        font-weight: bold;
+    }
+</style>
 <div id="main">
     <header class="mb-3">
         <a href="#" class="burger-btn d-block d-xl-none">
@@ -69,7 +89,7 @@
                                     </div>
                                     <div class="col-md-8">
                                         <h6 class="text-muted font-semibold">Posted Ideas </h6>
-                                        <h6 class="font-extrabold mb-0">{{  $ideas }}</h6>
+                                        <h6 class="font-extrabold mb-0">{{  $countideas }}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -138,157 +158,16 @@
                                     </div>
                                     <div class="col-md-8">
                                         <h6 class="text-muted font-semibold">Posted Ideas </h6>
-                                        <h6 class="font-extrabold mb-0">{{  $ideas }}</h6>
+                                        <h6 class="font-extrabold mb-0">{{  $countideas }}</h6>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     @endif
-                    {{-- <div class="col-6 col-lg-4 col-md-6">
-                        <div class="card">
-                            <div class="card-body px-3 py-4-5">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="stats-icon red">
-                                            <i class="iconly-boldBookmark"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <h6 class="text-muted font-semibold">Saved Record</h6>
-                                        <h6 class="font-extrabold mb-0">{{ $staff }}</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
+                   
                 </div>
-                {{-- <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>Profile Visit</h4>
-                            </div>
-                            <div class="card-body">
-                                <div id="chart-profile-visit"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
-                {{-- <div class="row">
-                    <div class="col-12 col-xl-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>Profile Visit</h4>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="d-flex align-items-center">
-                                            <svg class="bi text-primary" width="32" height="32" fill="blue"
-                                                style="width:10px">
-                                                <use
-                                                    xlink:href="assets/vendors/bootstrap-icons/bootstrap-icons.svg#circle-fill" />
-                                            </svg>
-                                            <h5 class="mb-0 ms-3">Europe</h5>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <h5 class="mb-0">862</h5>
-                                    </div>
-                                    <div class="col-12">
-                                        <div id="chart-europe"></div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="d-flex align-items-center">
-                                            <svg class="bi text-success" width="32" height="32" fill="blue"
-                                                style="width:10px">
-                                                <use
-                                                    xlink:href="assets/vendors/bootstrap-icons/bootstrap-icons.svg#circle-fill" />
-                                            </svg>
-                                            <h5 class="mb-0 ms-3">America</h5>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <h5 class="mb-0">375</h5>
-                                    </div>
-                                    <div class="col-12">
-                                        <div id="chart-america"></div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="d-flex align-items-center">
-                                            <svg class="bi text-danger" width="32" height="32" fill="blue"
-                                                style="width:10px">
-                                                <use
-                                                    xlink:href="assets/vendors/bootstrap-icons/bootstrap-icons.svg#circle-fill" />
-                                            </svg>
-                                            <h5 class="mb-0 ms-3">Indonesia</h5>
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <h5 class="mb-0">1025</h5>
-                                    </div>
-                                    <div class="col-12">
-                                        <div id="chart-indonesia"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-xl-8">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>Latest Comments</h4>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-hover table-lg">
-                                        <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Comment</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td class="col-3">
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="avatar avatar-md">
-                                                            <img src="assets/images/faces/5.jpg">
-                                                        </div>
-                                                        <p class="font-bold ms-3 mb-0">Si Cantik</p>
-                                                    </div>
-                                                </td>
-                                                <td class="col-auto">
-                                                    <p class=" mb-0">Congratulations on your graduation!</p>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="col-3">
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="avatar avatar-md">
-                                                            <img src="assets/images/faces/2.jpg">
-                                                        </div>
-                                                        <p class="font-bold ms-3 mb-0">Si Ganteng</p>
-                                                    </div>
-                                                </td>
-                                                <td class="col-auto">
-                                                    <p class=" mb-0">Wow amazing design! Can you make another
-                                                        tutorial for
-                                                        this design?</p>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
+             
             </div>
             <div class="col-12 col-lg-4">
                 <div class="card" data-bs-toggle="modal" data-bs-target="#default">
@@ -400,55 +279,68 @@
                     </div>
                 </div>
                 {{-- end user profile modal --}}
-
-                {{-- <div class="card">
-                    <div class="card-header">
-                        <h4>Recent Messages</h4>
-                    </div>
-                    <div class="card-content pb-4">
-                        <div class="recent-message d-flex px-4 py-3">
-                            <div class="avatar avatar-lg">
-                                <img src="assets/images/faces/4.jpg">
-                            </div>
-                            <div class="name ms-4">
-                                <h5 class="mb-1">Hank Schrader</h5>
-                                <h6 class="text-muted mb-0">@johnducky</h6>
-                            </div>
-                        </div>
-                        <div class="recent-message d-flex px-4 py-3">
-                            <div class="avatar avatar-lg">
-                                <img src="assets/images/faces/5.jpg">
-                            </div>
-                            <div class="name ms-4">
-                                <h5 class="mb-1">Dean Winchester</h5>
-                                <h6 class="text-muted mb-0">@imdean</h6>
-                            </div>
-                        </div>
-                        <div class="recent-message d-flex px-4 py-3">
-                            <div class="avatar avatar-lg">
-                                <img src="assets/images/faces/1.jpg">
-                            </div>
-                            <div class="name ms-4">
-                                <h5 class="mb-1">John Dodol</h5>
-                                <h6 class="text-muted mb-0">@dodoljohn</h6>
-                            </div>
-                        </div>
-                        <div class="px-4">
-                            <button class='btn btn-block btn-xl btn-light-primary font-bold mt-3'>Start
-                                Conversation</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Visitors Profile</h4>
-                    </div>
-                    <div class="card-body">
-                        <div id="chart-visitors-profile"></div>
-                    </div>
-                </div> --}}
+    
             </div>
         </section>
+
+        <div class="row">
+    <div class="col-md-12">
+    
+    @if (!$ideas->isEmpty())
+    @if(Auth::user()->role_name=='Super Admin')
+    <h6>Recent Ideas</h6>
+    @foreach ($ideas as $item)
+
+    
+    <div class="recent-message d-flex py-3">        
+        <div class="name ms-4">
+            <a href="{{ route('read', $item->title) }}">
+            <h6 class="mb-1 ">{{ $item->title }} <br> <span class="text-muted"> {{  Str::words($item->descriptions, '20') }} </span> </h6>
+            </a>
+            <p class="sign "><span>Posted By: {{ $item->posted_by }}  <small>{{ \Carbon\Carbon::parse($item->created_at)->diffForHumans() }} </small> </span> </p>
+        </div>
+    </div>
+ 
+   </div>    
+   @endforeach
+   @elseif(Auth::user()->role_name=='Admin')
+   @foreach ($admin_ideas as $item) 
+
+   <div class="recent-message d-flex py-3">        
+    <div class="name ms-4">
+        <a href="{{ route('read', $item->title) }}">
+        <h6 class="mb-1 ">{{ $item->title }} <br> <span class="text-muted"> {{  Str::words($item->descriptions, '20') }} </span> </h6>
+        </a>
+        <p class="sign "><span>Posted By: {{ $item->posted_by }}  <small>{{ \Carbon\Carbon::parse($item->created_at)->diffForHumans() }} </small> </span> </p>
+    </div>
+</div>
+
+</div> 
+
+   @endforeach
+   @else
+   @foreach ($spec_ideass as $item)    
+   <div class="recent-message d-flex py-3">        
+       <div class="name ms-4">
+           <a href="{{ route('read', $item->title) }}">
+           <h6 class="mb-1 ">{{ $item->title }} <br> <span class="text-muted"> {{  Str::words($item->descriptions, '20') }} </span> </h6>
+           </a>
+           <p class="sign "><span>Posted By: {{ $item->posted_by }}  <small>{{ \Carbon\Carbon::parse($item->created_at)->diffForHumans() }} </small> </span> </p>
+       </div>
+   </div>
+
+  </div> 
+
+  @endforeach
+   @endif
+   @else
+   <div class="pt-4">
+    <div class="alert bg-info">
+       <strong> No recent ideas found</strong>
+    </div>
+   </div>
+    @endif
+        </div>
     </div>
 
     <footer>

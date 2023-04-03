@@ -29,13 +29,22 @@
     <div class="page-heading">
         <div class="page-title">
             <div class="row">
-                <div class="col-12 col-md-6 order-md-1 order-last">
+                <div class="col-lg-6 col-md-12 order-md-1 order-last">
                     <h3>List of Ideas Briefings</h3>
                     {{-- <p class="text-subtitle text-muted">For Ideas Briefings</p> --}}
                 </div>
                     
                 
-           
+                {{-- <div class="col-12 col-md-6 order-md-2 order-first float-right pb-5 ml-5">
+                    <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                        <div class="float-right">
+                            <a href="{{ route('ideas/add/new') }}" class="btn btn-outline-success"><i class="bi bi-plus"></i>
+                             Add New
+                            </a>
+                            
+                         </div>
+                    </nav>
+                </div> --}}
                 
             </div>
         </div>
@@ -63,33 +72,7 @@
                   @endforeach
                 </div>
              </div>
-                {{-- <div class="card-body">
-                    <table class="table table-striped" id="table1">
-                        <thead>
-                            <tr>
-                                <th>S/NO</th>
-                                <th>Posted by</th>
-                                <th>Group</th>
-                                <th>Title</th>
-                               
-                                <th>Descriptions</th>
-                               
-                            </tr>    
-                        </thead>
-                        <tbody>
-                            @foreach ($ideas as $key => $item)
-                                <tr>
-                                    <td>{{ ++$key }}</td>                                    
-                                    <td>{{ $item->posted_by }}</td>
-                                    <td>{{ $item->target_group }}</td>
-                                    <td>{{ $item->title }}</td>
-                                    <td>{{ $item->descriptions }}</td>
-                                    
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div> --}}
+   
             </div>
         </section>
     </div>

@@ -41,8 +41,15 @@ class FormController extends Controller
 
     public function related()
     {
-        $ideas = DB::table('ideas')->where('target_group' , Auth::user()->ideas)->get();
+        $data=json_decode(Auth::user()->ideas);
+        $idea1=$data[0] ?? "";
+        $idea2=$data[1] ?? $idea1;
+        $idea3=$data[2] ?? $idea1;
+        
+        $ideas = DB::table('ideas')->where('target_group' , $idea1)->orwhere('target_group' , $idea2)->orwhere('target_group' , $idea3)->get();
+        //dd($ideas);
         return view('view_record.ideas',compact('ideas'));
+              
     }
 
     // view detail
@@ -115,6 +122,11 @@ class FormController extends Controller
             $Idea->target_group      = $target_group;
             $Idea->title    = $title;
             $Idea->descriptions       = $description;
+            $Idea->amount       = $request->amount;
+            $Idea->region      = $request->region;
+            $Idea->country       = $request->country;
+            $Idea->likes      = 0;
+            $Idea->unlikes      = 0;
             $Idea->status ='0';
             $Idea->save();
 

@@ -53,7 +53,7 @@
 
                         <div class="form-group position-relative has-icon-left mb-4">
                             <label>Date of Birth</label>
-                            <input type="date" class="form-control form-control-lg @error('birth_date') is-invalid @enderror" name="birth_date" >
+                            <input type="date" class="form-control form-control-lg @error('birth_date') is-invalid @enderror" name="birth_date" required max="@php echo Date('Y-m-d') @endphp" >
                             <div class="form-control-icon">
                                 <i class="bi bi-calendar-date"></i>
                             </div>
@@ -63,8 +63,36 @@
                                 </span>
                             @enderror
                         </div>
-
                         <div class="form-group position-relative has-icon-left mb-4">
+                            <label><i class="bi bi-exclude"></i> Select Investment Idea</label>
+                            <fieldset class="form-group">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" value="Real Estate" name="investment[]" id="investment" checked>
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Real Estate
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Equities" name="investment[]" id="investment">
+                            <label class="form-check-label" for="flexCheckChecked">
+                                Equities
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Crypto" name="investment[]" id="investment">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                Crypto
+                            </label>
+                          </div>
+                         
+                        </fieldset>
+                        @error('role_name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                        {{-- <div class="form-group position-relative has-icon-left mb-4">
                             <fieldset class="form-group">
                                 <select class="form-select @error('role_name') is-invalid @enderror" name="investment" id="investment">
                                     <option selected disabled>Select Investment Idea</option>
@@ -81,7 +109,7 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                        </div>
+                        </div> --}}
                         {{-- <div class="form-group position-relative mb-4">
                             <fieldset class="form-group"> --}}
                                 <select class="form-select @error('role_name') is-invalid @enderror" name="role_name" id="role_name" hidden>

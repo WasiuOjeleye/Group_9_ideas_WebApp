@@ -32,12 +32,13 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">New idea Information</h4>
+                <h4 class="card-title">Edit idea Information</h4>
             </div>
             <div class="card-content">
                 <div class="card-body">
-                    <form class="form form-horizontal" action="{{ route('form/save') }}" method="POST">
+                    <form class="form form-horizontal" action="{{ route('ideas/update_idea', $ideas->id) }}" method="POST">
                         @csrf
+                        @method('PUT')
                         <div class="form-body">
                             <div class="row">
                                 {{-- <div class="col-md-4">
@@ -48,7 +49,7 @@
                                     <div class="form-group has-icon-left">
                                         <div class="position-relative">
                                             <select class="form-select" name="target_group" aria-label="Default select example">
-                                                <option selected disabled>Select the target group</option>
+                                                <option selected value="{{ $ideas->target_group }}">{{ $ideas->target_group }}</option>
                                                 <option value="Real Estate">Real Estate</option>
                                                 <option value="Equities">Equities</option>
                                                 <option value="Crypto">Crypto</option>
@@ -66,7 +67,7 @@
                                     <div class="form-group has-icon-left">
                                         <div class="position-relative">
                                             <input type="number" class="form-control @error('department') is-invalid @enderror" 
-                                                placeholder="Enter Amount" name="amount">
+                                                placeholder="Enter Amount" name="amount" value="{{ $ideas->amount }}">
                                             <div class="form-control-icon">
                                                 <i class="bi bi-card-heading"></i>
                                             </div>
@@ -78,7 +79,7 @@
                                     <div class="form-group has-icon-left">
                                         <div class="position-relative">
                                             <input type="text" class="form-control @error('department') is-invalid @enderror" 
-                                                placeholder="Enter Region" name="region">
+                                                placeholder="Enter Region" name="region" value="{{ $ideas->region }}">
                                             <div class="form-control-icon">
                                                 <i class="bi bi-card-heading"></i>
                                             </div>
@@ -91,7 +92,7 @@
                                     <div class="form-group has-icon-left">
                                         <div class="position-relative">
                                             <input type="text" class="form-control @error('department') is-invalid @enderror" 
-                                                placeholder="Enter Country" name="country">
+                                                placeholder="Enter Country" name="country" value="{{ $ideas->country }}">
                                             <div class="form-control-icon">
                                                 <i class="bi bi-card-heading"></i>
                                             </div>
@@ -104,7 +105,7 @@
                                     <div class="form-group has-icon-left">
                                         <div class="position-relative">
                                             <input type="text" class="form-control @error('department') is-invalid @enderror" 
-                                                placeholder="Enter Idea title" name="title">
+                                                placeholder="Enter Idea title" name="title" value="{{ $ideas->title }}">
                                             <div class="form-control-icon">
                                                 <i class="bi bi-card-heading"></i>
                                             </div>
@@ -120,11 +121,8 @@
                                     <div class="form-group has-icon-left">
                                         <div class="position-relative">
                                             <textarea  class="form-control @error('salary') is-invalid @enderror" name="description"
-                                                placeholder="Enter idea description" name="desc"> </textarea>
-                                            {{-- <div class="form-control-icon">
-                                                <i class="bi bi-envelope-fill"></i>
-                                            </div> 
-                                        </div>--}}
+                                                placeholder="Enter idea description" name="desc" rows="30"> {{ $ideas->descriptions }} </textarea>
+                                            
                                     </div>
                                 </div>
 

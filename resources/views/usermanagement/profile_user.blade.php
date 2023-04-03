@@ -59,20 +59,20 @@
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text" id="basic-addon1">Name</span>
                                                     <input type="text" class="form-control" name="name" value="{{ $users->name }}"
-                                                        aria-label="Username" aria-describedby="basic-addon1">
+                                                        aria-label="Username" aria-describedby="basic-addon1" required>
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 mb-1">
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text" id="basic-addon1">Email</span>
                                                     <input type="text" class="form-control" name="email" value="{{ $users->email }}"
-                                                        aria-label="Username" aria-describedby="basic-addon1">
+                                                        aria-label="Username" aria-describedby="basic-addon1" required>
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 mb-1">
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text"  id="basic-addon1">Date Of Birth</span>
-                                                    <input type="date" class="form-control" name="birth_date" required
+                                                    <input type="date" class="form-control" name="birth_date" required max="@php echo Date('Y-m-d') @endphp"
                                                         aria-label="Username" aria-describedby="basic-addon1">
                                                 </div>
                                             </div>
@@ -80,13 +80,13 @@
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text" id="basic-addon1">Phone Number</span>
                                                     <input type="number" class="form-control" name="phone" value="{{ $users->phone_number }}"
-                                                        aria-label="Username" aria-describedby="basic-addon1">
+                                                        aria-label="Username" aria-describedby="basic-addon1" required>
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 mb-1">
                                             <div class="form-group position-relative has-icon-left mb-4">
                                                 <fieldset class="form-group">
-                                                    <select class="form-select @error('role_name') is-invalid @enderror" name="ideas" id="investment">
+                                                    <select class="form-select @error('role_name') is-invalid @enderror" name="ideas" id="investment" required>
                                                         <option selected value="{{ $users->ideas }}">{{ $users->ideas }}</option>
                                                         <option value="Real Estate">Real Estate</option>
                                                         <option value="Equities">Equities</option>

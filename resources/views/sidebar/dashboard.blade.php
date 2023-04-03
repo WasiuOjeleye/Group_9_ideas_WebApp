@@ -73,7 +73,13 @@
                             </li> --}}
                         </ul>
                     </li>
-                    
+                    <li class="sidebar-item">
+                        <a href="{{ route('related') }}" class='sidebar-link'>
+                            <i class="bi bi-file-earmark-medical-fill"></i>
+                            <span>All Users</span>
+                        </a>
+                      
+                    </li>
                     @else
                     <li class="sidebar-item">
                         <a href="{{ route('related') }}" class='sidebar-link'>
