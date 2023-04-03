@@ -35,16 +35,7 @@
                 </div>
                     
                 
-                <div class="col-12 col-md-6 order-md-2 order-first float-right pb-5 ml-5">
-                    <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
-                        <div class="float-right">
-                            <a href="{{ route('ideas/add/new') }}" class="btn btn-outline-success"><i class="bi bi-plus"></i>
-                             Add New
-                            </a>
-                            
-                         </div>
-                    </nav>
-                </div>
+           
                 
             </div>
         </div>
